@@ -12,8 +12,8 @@ const Navigation = () => {
     <div>
       {
         cityList.map((cityName)=>(
-          <NavigationButton key={cityName} active={selectedCity === cityName} onClick={() => setSelectedCity(cityName)}>
-            {cityName.toUpperCase()}
+          <NavigationButton key={cityName.id} active={selectedCity === cityName} onClick={() => setSelectedCity(cityName)}>
+            {cityName.name.toUpperCase()}
           </NavigationButton>
         ))
       }
