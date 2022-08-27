@@ -1,0 +1,1 @@
+export const cityList = ['Vancouver', 'Toronto', 'Matsue']
