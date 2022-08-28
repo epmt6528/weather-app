@@ -6,13 +6,20 @@ import useOpenWeatherMap from '../../../services/api/useOpenWeatherMap'
 
 const Home = () => {
   const {data, error} = useOpenWeatherMap()
-  console.log(data, error)
 
   return (
     <div className={'home-root'}>
       <Navigation />
       <Card>
-        <WeatherCardLarge />
+        {
+          error
+            && <h1>Something went wrong. Please reload the page.</h1>
+        }
+        {
+          data
+            ? <WeatherCardLarge data={data} />
+            : <h1>Loading...</h1>
+        }
       </Card>
     </div>
   )
