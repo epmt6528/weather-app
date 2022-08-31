@@ -1,22 +1,23 @@
-import { text } from '../../../consts/texts'
-import WeatherIcon from '../../molecules/WeatherIcon/WeatherIcon'
+import './styles.less'
+import { WeatherIcon } from '../../molecules'
 import { convertKelvinToCelsius } from '../../../services/formatter/temperture'
+import { convertUtcTimeToLocal, getDay } from '../../../services/formatter/dateAndTime'
 
-interface WeatherCardSmallProps  {
-  data: any
+type WeatherCardSmallProps = {
+  data: any,
 }
 
-const WeatherCardSmall = (props: WeatherCardSmallProps) => {
+const WeatherCardSmall = (props: WeatherCardSmallProps): JSX.Element => {
   const { data } = props
-  // TODO Adjust time difference
-  const weather = data.list[0].weather[0].main
-  const temperture = convertKelvinToCelsius(data.list[0].main.temp)
+  const weather = data.weather[0].main
+  const temperture = convertKelvinToCelsius(data.main.temp)
+  const date = getDay(convertUtcTimeToLocal(data.dt_txt))
 
   return (
     <div className={'weather-card-small-root'}>
-      <h2>{text.today}</h2>
-      <WeatherIcon weather={weather} />
-      <p className={'temperture'}>{temperture}°</p>
+      <h2 className={'weather-card-small-heading'}>{date}</h2>
+      <WeatherIcon weather={weather} className={'weather-card-small-icon'} />
+      <p className={'temperture weather-card-small-temperture'}>{temperture}°</p>
     </div>
   )
 }

@@ -1,3 +1,31 @@
-.weather-card-small-root {
+@import "src/styles/theme";
 
+.weather-card-small-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  background: @color-primary;
+}
+
+.weather-card-small-heading {
+  margin-bottom: 10px;
+
+  @media @desktop {
+    font-size: 1.5rem;
+  }
+}
+
+p.weather-card-small-temperture {
+  margin-top: 10px;
+  font-size: 1.8rem;
+
+  @media @desktop {
+    font-size: 2.2rem;
+  }
+}
+
+.weather-card-small-icon {
+  width: 55px;
 }
