@@ -1,24 +1,25 @@
-import { Navigation } from '../../molecules'
-import { Card } from '../../atoms'
-import { WeatherCardLarge } from '../../organisms'
 import './styles.less'
+import { Card } from '../../atoms'
+import { Navigation } from '../../molecules'
+import { WeatherList } from '../../organisms'
 import useOpenWeatherMap from '../../../services/api/useOpenWeatherMap'
 
-const Home = () => {
-  const {data, error} = useOpenWeatherMap()
+
+const Home = (): JSX.Element => {
+  const {data, error, fiveDaysData} = useOpenWeatherMap()
 
   return (
     <div className={'home-root'}>
       <Navigation />
-      <Card>
+      <Card className={'home-card'}>
         {
           error
-            && <h1>Something went wrong. Please reload the page.</h1>
+            && <h2>Something went wrong. Please reload the page.</h2>
         }
         {
-          data
-            ? <WeatherCardLarge data={data} />
-            : <h1>Loading...</h1>
+          data && fiveDaysData.length
+            ? <WeatherList data={fiveDaysData} />
+            : <h2>Loading...</h2>
         }
       </Card>
     </div>
