@@ -1,15 +1,16 @@
 import React from 'react'
 import './styles.less'
 
-interface CardProps  {
+type CardProps = {
+  className?: string,
   children: React.ReactNode
 }
 
-const Card = (props: CardProps) => {
-  const { children } = props
+const Card = (props: CardProps): JSX.Element => {
+  const { children, className } = props
 
   return (
-    <div className='card-root'>
+    <div className={`card-root ${className}`}>
       {children}
     </div>
   )
