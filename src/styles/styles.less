@@ -1,4 +1,4 @@
-@import "theme";
+@import "src/styles/theme";
 
 * {
   margin: 0;
@@ -10,36 +10,54 @@
   background: @color-primary;
 
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
+
+// Fonts
 h2 {
   font-family: @font-montserrat;
-  font-weight: 100;
+  font-weight: 200;
   font-size: 1rem;
+
+  @media @desktop {
+    font-size: 2rem;
+  }
 }
 
 p {
   font-family: @font-montserrat;
-  font-weight: 100;
+  font-weight: 200;
   font-size: 1rem;
   line-height: 1;
+
+  @media @desktop {
+    font-size: 2rem;
+  }
 }
 
 p.temperture {
   font-family: @font-teko;
   font-weight: 300;
   font-size: 3rem;
+
+  @media @desktop {
+    font-size: 5.5rem;
+    line-height: .7;
+  }
 }
 
 button {
   font-family: @font-montserrat;
-  font-weight: 100;
+  font-weight: 200;
   font-size: 1rem;
+  cursor: pointer;
+
+  @media @desktop {
+    font-size: 2rem;
+  }
 }
 
 button.navigationButton-active {
-  font-family: @font-montserrat;
   font-weight: 600;
-  font-size: 1rem;
 }
