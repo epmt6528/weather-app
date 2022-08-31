@@ -1,15 +1,20 @@
 import React, { createContext, useState } from 'react'
 import { cityList } from '../consts/cityList'
 
-export const SelectedCityContext = createContext({})
-
-interface CardProps  {
+type SelectedCityContextWrapperProps = {
   children: React.ReactNode
 }
 
-const SelectedCityContextWrapper = (props: CardProps) => {
+type selectedCity = {
+  id: string,
+  name: string
+}
+
+export const SelectedCityContext = createContext<any>({})
+
+const SelectedCityContextWrapper = (props: SelectedCityContextWrapperProps): JSX.Element => {
   const {children} = props
-  const [selectedCity, setSelectedCity] = useState(cityList[0])
+  const [selectedCity, setSelectedCity] = useState<selectedCity>(cityList[0])
 
   return (
     <SelectedCityContext.Provider value={{

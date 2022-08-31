@@ -1,3 +1,15 @@
+@import "src/styles/theme";
+
 .navigation-root {
   margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+
+  @media @desktop {
+    width: 800px;
+
+    & button {
+      margin: 0px 50px;
+    }
+  }
 }
