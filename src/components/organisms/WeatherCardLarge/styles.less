@@ -6,7 +6,20 @@
   align-items: center;
   justify-content: center;
   background: @color-primary;
-  padding: 20px;
+  padding: 0 20px 20px;
+
+  @media @desktop {
+    grid-column: 1/-1;
+  }
+}
+
+.weather-card-large-heading {
+  font-size: 1.15rem;
+
+  @media @desktop {
+    margin-bottom: 10px;
+    font-size: 1.9rem;
+  }
 }
 
 .weather-card-large-body {
@@ -14,4 +27,26 @@
   align-items: center;
   justify-content: center;
   margin: 10px 0;
+
+  @media @desktop {
+    margin-top: 30px;
+  }
+}
+
+svg.weather-card-large-icon {
+  @media @desktop {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.weather-card-large-text-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20px;
+
+  @media @desktop {
+    min-height: 100px;
+  }
 }

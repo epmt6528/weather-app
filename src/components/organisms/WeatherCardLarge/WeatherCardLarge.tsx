@@ -1,25 +1,24 @@
 import './styles.less'
 import { text } from '../../../consts/texts'
 import { convertKelvinToCelsius } from '../../../services/formatter/temperture'
-import WeatherIcon from '../../molecules/WeatherIcon/WeatherIcon'
+import { WeatherIcon } from '../../molecules'
 
-interface WeatherCardLargeProps  {
+type WeatherCardLargeProps = {
   data: any
 }
 
-const WeatherCardLarge = (props: WeatherCardLargeProps) => {
+const WeatherCardLarge = (props: WeatherCardLargeProps): JSX.Element => {
   const { data } = props
-  // TODO Adjust time difference
-  const weather = data.list[0].weather[0].main
-  const temperture = convertKelvinToCelsius(data.list[0].main.temp)
+  const weather = data.weather[0].main
+  const temperture = convertKelvinToCelsius(data.main.temp)
 
   return (
     <div className='weather-card-large-root'>
-      <h2>{text.today}</h2>
-      <div className={'weather-card-large-body'}>
-        <WeatherIcon weather={weather} />
-        <div className={'weather-card-large-text-div'}>
-          <p className={'temperture'}>{temperture}°</p>
+      <h2 className='weather-card-large-heading'>{text.today}</h2>
+      <div className='weather-card-large-body'>
+        <WeatherIcon weather={weather} className='weather-card-large-icon' />
+        <div className='weather-card-large-text-div'>
+          <p className='temperture'>{temperture}°</p>
           <p>{weather}</p>
         </div>
       </div>
