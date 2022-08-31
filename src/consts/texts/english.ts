@@ -9,4 +9,8 @@ const english = {
   sunday: 'Sun',
 }
 
+
+const {sunday, monday, tuesday, wednesday, thursday, friday, saturday} = english
+export const dayArray = [sunday, monday, tuesday, wednesday, thursday, friday, saturday]
+
 export default english
