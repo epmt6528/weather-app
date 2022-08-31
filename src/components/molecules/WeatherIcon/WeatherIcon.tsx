@@ -1,18 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { weatherIconList } from '../../../assets/weatherIconList';
 import './styles.less'
+import { Component } from 'react'
 
 type WeatherIconProps = {
   weather: string,
   className?: string
 }
 
-const WeatherIcon = (props: WeatherIconProps): JSX.Element => {
-  const { weather, className } = props
+class WeatherIcon extends Component<WeatherIconProps>{
 
-  return (
-    <FontAwesomeIcon icon={weatherIconList[weather]} className={`weather-icon-root ${className}`} />
-  )
+  render() {
+    return (
+      <FontAwesomeIcon icon={weatherIconList[this.props.weather]} className={`weather-icon-root ${this.props.className}`} />
+    )
+  }
 }
 
 export default WeatherIcon

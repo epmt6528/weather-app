@@ -1,31 +1,40 @@
-import { useContext } from 'react'
+import { Component } from 'react'
 import './styles.less'
-import { SelectedCityContext } from '../../../context/SelectedCityContextWrapper'
 import { cityList } from '../../../consts/cityList'
 import { NavigationButton } from '../../atoms'
 
-const Navigation = (): JSX.Element => {
-  const { selectedCityContext } = useContext(SelectedCityContext)
-  const [selectedCity, setSelectedCity] = selectedCityContext
+export type selectedCity = {
+  id: string,
+  name: string
+}
 
-  return (
-    <div className={'navigation-root'}>
-      {
-        cityList.map((cityName)=>{
-          const {id, name} = cityName
-          const isActive = selectedCity === cityName
-          const onClick = () => setSelectedCity(cityName)
-          const upperCasedCityName = name.toUpperCase()
+type NavigationProps = {
+  selectedCity: selectedCity,
+  setSelectedCity: (selectedCity: selectedCity) => void
+}
 
-          return(
-            <NavigationButton key={id} active={isActive} onClick={onClick}>
-              {upperCasedCityName}
-            </NavigationButton>
-          )
-        })
-      }
-    </div>
-  )
+class Navigation extends Component<NavigationProps> {
+  render() {
+    return (
+      <div className={'navigation-root'}>
+        {
+          cityList.map((cityName)=>{
+            const {id, name} = cityName
+            const isActive = this.props.selectedCity === cityName
+            const onClick = () => this.props.setSelectedCity(cityName)
+            const upperCasedCityName = name.toUpperCase()
+
+            return(
+              <NavigationButton key={id} active={isActive} onClick={onClick}>
+                {upperCasedCityName}
+              </NavigationButton>
+            )
+          })
+        }
+      </div>
+    )
+  }
+
 }
 
 export default Navigation

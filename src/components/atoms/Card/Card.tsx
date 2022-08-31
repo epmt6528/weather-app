@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './styles.less'
 
 type CardProps = {
@@ -6,14 +6,15 @@ type CardProps = {
   children: React.ReactNode
 }
 
-const Card = (props: CardProps): JSX.Element => {
-  const { children, className } = props
+class Card extends Component<CardProps> {
 
-  return (
-    <div className={`card-root ${className}`}>
-      {children}
-    </div>
-  )
+  render() {
+    return (
+      <div className={`card-root ${this.props.className}`}>
+        {this.props.children}
+      </div>
+    )
+  }
 }
 
 export default Card

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './styles.less'
 
 type NavigationButtonProps = {
@@ -7,15 +7,15 @@ type NavigationButtonProps = {
   active: boolean
 }
 
-const NavigationButton = (props: NavigationButtonProps): JSX.Element => {
-  const {onClick, children, active} = props
-  const className = active ? 'navigationButton-root navigationButton-active' : 'navigationButton-root'
+class NavigationButton extends Component<NavigationButtonProps> {
 
-  return (
-    <button className={className} onClick={onClick}>
-      {children}
-    </button>
-  )
+  render() {
+    return (
+      <button className={this.props.active ? 'navigationButton-root navigationButton-active' : 'navigationButton-root'} onClick={this.props.onClick}>
+        {this.props.children}
+      </button>
+    )
+  }
 }
 
 export default NavigationButton

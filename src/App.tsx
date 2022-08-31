@@ -1,15 +1,16 @@
 import './styles/styles.less';
-import SelectedCityContextWrapper from './context/SelectedCityContextWrapper'
+import { Component } from 'react'
 import { Home } from './components/templates'
 
-function App() {
-  return (
-    <SelectedCityContextWrapper>
+class App extends Component {
+
+  render() {
+    return (
       <div className="App">
-          <Home />
+        <Home />
       </div>
-    </SelectedCityContextWrapper>
-  );
+    );
+  }
 }
 
 export default App;
